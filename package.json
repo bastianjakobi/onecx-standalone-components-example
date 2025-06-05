@@ -10,14 +10,25 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-architects/module-federation": "^18.0.6",
     "@angular/animations": "^18.2.0",
     "@angular/common": "^18.2.0",
     "@angular/compiler": "^18.2.0",
     "@angular/core": "^18.2.0",
+    "@angular/elements": "^18.2.13",
     "@angular/forms": "^18.2.0",
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@onecx/angular-auth": "^5.41.1",
+    "@onecx/angular-integration-interface": "^5.41.1",
+    "@onecx/angular-utils": "^5.41.1",
+    "@onecx/angular-webcomponents": "^5.41.1",
+    "@primeng/themes": "^18.0.2",
+    "@webcomponents/webcomponentsjs": "^2.8.0",
+    "primeflex": "^4.0.0",
+    "primeng": "^18.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
@@ -33,6 +44,9 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.5.2"
+    "ngx-build-plus": "^18.0.0",
+    "typescript": "~5.5.2",
+    "webpack": "^5.99.9",
+    "webpack-merge": "^6.0.1"
   }
 }
