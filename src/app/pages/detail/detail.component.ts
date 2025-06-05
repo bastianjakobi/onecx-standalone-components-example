@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { NavigationService } from '../../services/navigation.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [ButtonModule],
+  imports: [ButtonModule, TranslateModule],
   templateUrl: './detail.component.html'
 })
 export class DetailComponent {

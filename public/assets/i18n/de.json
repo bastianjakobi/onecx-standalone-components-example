@@ -1,0 +1,12 @@
+{
+    "HOME_PAGE": {
+        "TITLE": "Startseite",
+        "DESCRIPTION": "Willkommen auf der Startseite der OneCX Standalone Components Example Anwendung.",
+        "BUTTON": "Zur Detailseite"
+    },
+    "DETAIL_PAGE": {
+        "TITLE": "Detailseite",
+        "DESCRIPTION": "Dies ist die Detailseite der OneCX Standalone Components Example Anwendung.",
+        "BUTTON": "Zurück zur Startseite"
+    }
+}

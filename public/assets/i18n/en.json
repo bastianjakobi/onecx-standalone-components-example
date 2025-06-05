@@ -1,0 +1,12 @@
+{
+  "HOME_PAGE": {
+    "TITLE": "Homepage",
+    "DESCRIPTION": "Welcome to the OneCX Standalone Components Example application homepage.",
+    "BUTTON": "Go to Detail Page"
+  },
+  "DETAIL_PAGE": {
+    "TITLE": "Detail Page",
+    "DESCRIPTION": "This is the detail page of the OneCX Standalone Components Example application.",
+    "BUTTON": "Back to Home Page"
+  }
+}
