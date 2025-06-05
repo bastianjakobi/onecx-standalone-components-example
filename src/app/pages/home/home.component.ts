@@ -3,6 +3,7 @@ import { ButtonModule } from 'primeng/button';
 import { NavigationService } from '../../services/navigation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
+import { PortalMessageService } from '@onecx/angular-integration-interface';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,15 @@ export class HomeComponent {
   private readonly router = inject(Router);
   private readonly activeRoute = inject(ActivatedRoute);
   private readonly navigationService = inject(NavigationService)
+  private readonly portalMessageService = inject(PortalMessageService);
   navigateToDetails() {
     this.navigationService.navigate(this.router, this.activeRoute, 'detail');
+  }
+  showPortalMessage() {
+    this.portalMessageService.info({
+      summaryKey: 'MESSAGE.SUMMARY',
+      summaryParameters: { name: 'Home Page' },
+      detailKey: 'MESSAGE.DETAIL',
+    })
   }
 }

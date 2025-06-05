@@ -1,3 +1,6 @@
 <h1>{{ 'DETAIL_PAGE.TITLE' | translate }}</h1>
 <p>{{ 'DETAIL_PAGE.DESCRIPTION' | translate }}</p>
-<p-button label="{{ 'DETAIL_PAGE.BUTTON' | translate }}" (onClick)="navigateToHome()"></p-button>
+<div class="flex gap-2">
+    <p-button label="{{ 'DETAIL_PAGE.BUTTON' | translate }}" (onClick)="navigateToHome()"></p-button>
+    <p-button label="{{ 'MESSAGE.SHOW_MESSAGE_BUTTON' | translate }}" (onClick)="showPortalMessage()"></p-button>
+</div>

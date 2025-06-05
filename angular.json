@@ -15,29 +15,36 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "ngx-build-plus:browser",
           "options": {
             "outputPath": "dist/onecx-standalone-components-example",
             "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
+            "main": "src/main.ts",
+            "scripts": [
+              "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"
             ],
+            "extraWebpackConfig": "webpack.config.js",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "public",
+                "output": "/"
               }
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+              {
+                "input": "./src/styles.scss",
+                "bundleName": "styles",
+                "inject": false
+              }
+            ]
           },
           "configurations": {
             "production": {
+              "extraWebpackConfig": "webpack.prod.config.js",
               "budgets": [
                 {
                   "type": "initial",
@@ -55,15 +62,28 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
+          "options": {
+            "buildTarget": "onecx-standalone-components-example:build",
+            "port": 4200,
+            "publicHost": "http://localhost:4200",
+            "extraWebpackConfig": "webpack.config.js"
+          },
           "configurations": {
             "production": {
+              "extraWebpackConfig": "webpack.prod.config.js",
               "buildTarget": "onecx-standalone-components-example:build:production"
             },
             "development": {
@@ -73,15 +93,16 @@
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n"
+          "builder": "ngx-build-plus:extract-i18n",
+          "options": {
+            "buildTarget": "YOUR_APP_NAME:build",
+            "extraWebpackConfig": "webpack.config.js"
+          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -90,9 +111,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }

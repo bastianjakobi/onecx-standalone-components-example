@@ -8,5 +8,9 @@
     "TITLE": "Detail Page",
     "DESCRIPTION": "This is the detail page of the OneCX Standalone Components Example application.",
     "BUTTON": "Back to Home Page"
+  },
+  "MESSAGE": {
+    "SUMMARY": "Message from {{name}}",
+    "DETAIL": "Use PortalMessageService to show toast messages."
   }
 }
