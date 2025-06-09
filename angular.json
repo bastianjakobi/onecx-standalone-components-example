@@ -32,6 +32,11 @@
                 "glob": "**/*",
                 "input": "public",
                 "output": "/"
+              },
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@onecx/angular-utils/assets/",
+                "output": "/onecx-angular-utils/assets/"
               }
             ],
             "styles": [

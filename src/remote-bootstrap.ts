@@ -53,15 +53,13 @@ bootstrapRemoteComponent(
   [
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(),
-    provideAngularUtils(),
     importProvidersFrom(AngularAuthModule),
     providePrimeNG({
       theme: {
         preset: Nora,
       },
-    }),
-    provideRouter(addInitializeModuleGuard(remoteRoutes)),
-    importProvidersFrom([
+    }),    
+    importProvidersFrom(
       TranslateModule.forRoot({
         isolate: false,
         loader: {
@@ -70,7 +68,8 @@ bootstrapRemoteComponent(
           deps: [HttpClient],
         },
       }),
-    ]),
+    ),
+    provideRouter(addInitializeModuleGuard(remoteRoutes)),
     {
       provide: APP_INITIALIZER,
       useFactory: initializeRouter,
@@ -84,5 +83,6 @@ bootstrapRemoteComponent(
       multi: true,
       deps: [AppStateService],
     },
+    provideAngularUtils(),
   ]
 );

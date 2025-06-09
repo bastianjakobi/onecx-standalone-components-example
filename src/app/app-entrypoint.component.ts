@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,6 +8,4 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app-entrypoint.component.html',
   styles: ``
 })
-export class AppEntrypointComponent {
-
-}
+export class AppEntrypointComponent {}

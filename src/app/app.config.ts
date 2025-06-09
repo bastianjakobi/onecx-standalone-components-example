@@ -8,13 +8,14 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import Nora from '@primeng/themes/nora';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { createTranslateLoader, TRANSLATION_PATH } from '@onecx/angular-utils';
+import { createTranslateLoader, provideAngularUtils, TRANSLATION_PATH } from '@onecx/angular-utils';
 import { routes } from './app.routes';
 import {
   HttpClient,
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { addInitializeModuleGuard } from '@onecx/angular-integration-interface';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,7 +27,7 @@ export const appConfig: ApplicationConfig = {
       },
     }),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(addInitializeModuleGuard(routes)),
     importProvidersFrom([
       TranslateModule.forRoot({
         isolate: false,
@@ -37,6 +38,7 @@ export const appConfig: ApplicationConfig = {
         },
       }),
     ]),
+    provideAngularUtils(),
     {
       provide: TRANSLATION_PATH,
       useValue: 'assets/i18n/',

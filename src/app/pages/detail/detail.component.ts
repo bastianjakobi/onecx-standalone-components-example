@@ -4,11 +4,12 @@ import { NavigationService } from '../../services/navigation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { PortalMessageService } from '@onecx/angular-integration-interface';
+import { PortalPageComponent } from '@onecx/angular-utils';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [ButtonModule, TranslateModule],
+  imports: [ButtonModule, TranslateModule, PortalPageComponent],
   templateUrl: './detail.component.html'
 })
 export class DetailComponent {
