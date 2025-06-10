@@ -100,7 +100,7 @@
         "extract-i18n": {
           "builder": "ngx-build-plus:extract-i18n",
           "options": {
-            "buildTarget": "YOUR_APP_NAME:build",
+            "buildTarget": "onecx-standalone-components-example:build",
             "extraWebpackConfig": "webpack.config.js"
           }
         },

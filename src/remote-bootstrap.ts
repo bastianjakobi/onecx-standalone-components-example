@@ -1,47 +1,47 @@
-import {
-  APP_INITIALIZER,
-  importProvidersFrom,
-  provideZoneChangeDetection,
-} from '@angular/core';
+import { APP_INITIALIZER, importProvidersFrom } from '@angular/core';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideRouter, Router, Routes } from '@angular/router';
-import {
-  bootstrapModule,
-  bootstrapRemoteComponent,
-} from '@onecx/angular-webcomponents';
-import { environment } from './environments/environment.development';
+import { provideRouter, Router } from '@angular/router';
+import { bootstrapRemoteComponent } from '@onecx/angular-webcomponents';
 import { AppEntrypointComponent } from './app/app-entrypoint.component';
+import { environment } from './environments/environment.development';
 
 import {
   HttpClient,
   provideHttpClient,
   withInterceptorsFromDi,
 } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { AngularAuthModule } from '@onecx/angular-auth';
 import {
   addInitializeModuleGuard,
   AppStateService,
 } from '@onecx/angular-integration-interface';
-import { initializeRouter, startsWith } from '@onecx/angular-webcomponents';
-import { DetailComponent } from './app/pages/detail/detail.component';
-import { HomeComponent } from './app/pages/home/home.component';
 import {
   createTranslateLoader,
   provideAngularUtils,
   TRANSLATION_PATH,
   translationPathFactory,
 } from '@onecx/angular-utils';
-import { AngularAuthModule } from '@onecx/angular-auth';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { initializeRouter } from '@onecx/angular-webcomponents';
+import { remoteRoutes } from './app/app.routes';
 
-export const remoteRoutes: Routes = [
-  {
-    matcher: startsWith(''),
-    component: HomeComponent,
-  },
-  {
-    matcher: startsWith('detail'),
-    component: DetailComponent,
-  },
+export const commonProviders = [
+  provideHttpClient(withInterceptorsFromDi()),
+  provideAnimationsAsync(),
+  importProvidersFrom(AngularAuthModule),
+  importProvidersFrom(
+    TranslateModule.forRoot({
+      isolate: false,
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient],
+      },
+    })
+  ),
+  provideAngularUtils({
+    contentType: 'microfrontend',
+  }),
 ];
 
 bootstrapRemoteComponent(
@@ -49,19 +49,7 @@ bootstrapRemoteComponent(
   'onecx-standalone-components-example',
   environment.isProduction,
   [
-    provideHttpClient(withInterceptorsFromDi()),
-    provideAnimationsAsync(),
-    importProvidersFrom(AngularAuthModule),
-    importProvidersFrom(
-      TranslateModule.forRoot({
-        isolate: false,
-        loader: {
-          provide: TranslateLoader,
-          useFactory: createTranslateLoader,
-          deps: [HttpClient],
-        },
-      })
-    ),
+    ...commonProviders,
     provideRouter(addInitializeModuleGuard(remoteRoutes)),
     {
       provide: APP_INITIALIZER,
@@ -76,6 +64,5 @@ bootstrapRemoteComponent(
       multi: true,
       deps: [AppStateService],
     },
-    provideAngularUtils({ contentType: 'microfrontend' }),
   ]
 );

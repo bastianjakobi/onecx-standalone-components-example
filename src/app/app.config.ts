@@ -10,7 +10,7 @@ import {
   createTranslateLoader,
   provideAngularUtils,
 } from '@onecx/angular-utils';
-import { routes } from './app.routes';
+import { standaloneRoutes } from './app.routes';
 import {
   HttpClient,
   provideHttpClient,
@@ -18,28 +18,14 @@ import {
 } from '@angular/common/http';
 import { addInitializeModuleGuard } from '@onecx/angular-integration-interface';
 import { AngularAuthModule } from '@onecx/angular-auth';
-import {
-  provideStandaloneProviders
-} from '@onecx/standalone-shell';
+import { provideStandaloneProviders } from '@onecx/standalone-shell';
+import { commonProviders } from '../remote-bootstrap';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideHttpClient(withInterceptorsFromDi()),
-    provideAnimationsAsync(),
-    importProvidersFrom(AngularAuthModule),
-    importProvidersFrom([
-      TranslateModule.forRoot({
-        isolate: false,
-        loader: {
-          provide: TranslateLoader,
-          useFactory: createTranslateLoader,
-          deps: [HttpClient],
-        },
-      }),
-    ]),
+    ...commonProviders,
     provideStandaloneProviders(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(addInitializeModuleGuard(routes)),
-    provideAngularUtils({ contentType: 'microfrontend' }),
+    provideRouter(addInitializeModuleGuard(standaloneRoutes)),
   ],
 };
