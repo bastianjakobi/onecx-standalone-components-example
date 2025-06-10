@@ -1,16 +1,11 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { ButtonModule } from 'primeng/button';
+import { StandaloneShellModule } from '@onecx/standalone-shell';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-standalone-root',
   standalone: true,
-  imports: [RouterOutlet, ButtonModule],
+  imports: [StandaloneShellModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'onecx-standalone-components-example';
-  constructor(private readonly translate: TranslateService) {}
-}
+export class AppComponent {}

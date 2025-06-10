@@ -25,6 +25,7 @@
     "@onecx/angular-integration-interface": "^5.41.2",
     "@onecx/angular-utils": "^5.41.2",
     "@onecx/angular-webcomponents": "^5.41.2",
+    "@onecx/standalone-shell": "^5.41.2",
     "@primeng/themes": "^18.0.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "primeflex": "^4.0.0",

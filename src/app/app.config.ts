@@ -8,7 +8,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import Nora from '@primeng/themes/nora';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { createTranslateLoader, provideAngularUtils, TRANSLATION_PATH } from '@onecx/angular-utils';
+import {
+  createTranslateLoader,
+  provideAngularUtils,
+} from '@onecx/angular-utils';
 import { routes } from './app.routes';
 import {
   HttpClient,
@@ -16,18 +19,21 @@ import {
   withInterceptorsFromDi,
 } from '@angular/common/http';
 import { addInitializeModuleGuard } from '@onecx/angular-integration-interface';
+import { AngularAuthModule } from '@onecx/angular-auth';
+import {
+  provideStandaloneProviders
+} from '@onecx/standalone-shell';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(),
+    importProvidersFrom(AngularAuthModule),
     providePrimeNG({
       theme: {
         preset: Nora,
       },
     }),
-    provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(addInitializeModuleGuard(routes)),
     importProvidersFrom([
       TranslateModule.forRoot({
         isolate: false,
@@ -38,6 +44,9 @@ export const appConfig: ApplicationConfig = {
         },
       }),
     ]),
+    provideStandaloneProviders(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(addInitializeModuleGuard(routes)),
     provideAngularUtils({ contentType: 'microfrontend' }),
   ],
 };

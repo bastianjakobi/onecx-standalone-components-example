@@ -1,7 +1,9 @@
-<h1>{{'HOME_PAGE.TITLE' | translate}}</h1>
-<p>{{'HOME_PAGE.DESCRIPTION' | translate}}</p>
-<div class="flex gap-2">
-    <p-button label="{{'HOME_PAGE.BUTTON' | translate}}" (onClick)="navigateToDetails()"></p-button>
-    <p-button label="{{'MESSAGE.SHOW_MESSAGE_BUTTON' | translate}}" (onClick)="showPortalMessage()"></p-button>
-</div>
+<ocx-portal-page>
+    <h1>{{'HOME_PAGE.TITLE' | translate}}</h1>
+    <p>{{'HOME_PAGE.DESCRIPTION' | translate}}</p>
+    <div class="flex gap-2">
+        <p-button label="{{'HOME_PAGE.BUTTON' | translate}}" (onClick)="navigateToDetails()"></p-button>
+        <p-button label="{{'MESSAGE.SHOW_MESSAGE_BUTTON' | translate}}" (onClick)="showPortalMessage()"></p-button>
+    </div>
+</ocx-portal-page>
 

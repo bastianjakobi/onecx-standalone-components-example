@@ -10,6 +10,7 @@
     "BUTTON": "Back to Home Page"
   },
   "MESSAGE": {
+    "SHOW_MESSAGE_BUTTON": "Show Message",
     "SUMMARY": "Message from {{name}}",
     "DETAIL": "Use PortalMessageService to show toast messages."
   }
