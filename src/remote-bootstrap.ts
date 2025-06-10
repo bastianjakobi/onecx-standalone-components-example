@@ -58,7 +58,7 @@ bootstrapRemoteComponent(
       theme: {
         preset: Nora,
       },
-    }),    
+    }),
     importProvidersFrom(
       TranslateModule.forRoot({
         isolate: false,
@@ -67,7 +67,7 @@ bootstrapRemoteComponent(
           useFactory: createTranslateLoader,
           deps: [HttpClient],
         },
-      }),
+      })
     ),
     provideRouter(addInitializeModuleGuard(remoteRoutes)),
     {
@@ -83,6 +83,6 @@ bootstrapRemoteComponent(
       multi: true,
       deps: [AppStateService],
     },
-    provideAngularUtils(),
+    provideAngularUtils({ contentType: 'microfrontend' }),
   ]
 );

@@ -38,11 +38,6 @@ export const appConfig: ApplicationConfig = {
         },
       }),
     ]),
-    provideAngularUtils(),
-    {
-      provide: TRANSLATION_PATH,
-      useValue: 'assets/i18n/',
-      multi: true,
-    },
+    provideAngularUtils({ contentType: 'microfrontend' }),
   ],
 };
