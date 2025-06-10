@@ -9,8 +9,6 @@ import {
   bootstrapModule,
   bootstrapRemoteComponent,
 } from '@onecx/angular-webcomponents';
-import Nora from '@primeng/themes/nora';
-import { providePrimeNG } from 'primeng/config';
 import { environment } from './environments/environment.development';
 import { AppEntrypointComponent } from './app/app-entrypoint.component';
 
@@ -54,11 +52,6 @@ bootstrapRemoteComponent(
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(),
     importProvidersFrom(AngularAuthModule),
-    providePrimeNG({
-      theme: {
-        preset: Nora,
-      },
-    }),
     importProvidersFrom(
       TranslateModule.forRoot({
         isolate: false,

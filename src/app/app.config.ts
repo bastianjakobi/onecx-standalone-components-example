@@ -5,8 +5,6 @@ import {
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { providePrimeNG } from 'primeng/config';
-import Nora from '@primeng/themes/nora';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import {
   createTranslateLoader,
@@ -29,11 +27,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     provideAnimationsAsync(),
     importProvidersFrom(AngularAuthModule),
-    providePrimeNG({
-      theme: {
-        preset: Nora,
-      },
-    }),
     importProvidersFrom([
       TranslateModule.forRoot({
         isolate: false,
